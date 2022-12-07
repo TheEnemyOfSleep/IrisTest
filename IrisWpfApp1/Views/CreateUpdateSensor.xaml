@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="IrisWpfApp1.Views.CreateUpdateSensor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IrisWpfApp1.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="SensorNumber"/>
+            <TextBox Grid.Row="1" Margin="0 5 0 0" Width="200" HorizontalAlignment="Left" Text="{Binding SensorNumber, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Location"/>
+            <TextBox Grid.Row="1" Text="{Binding Location, UpdateSourceTrigger=PropertyChanged}" Margin="0 5 0 0"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Sensor Charge"/>
+            <TextBox Grid.Row="1" Margin="0 5 0 0" Width="200" HorizontalAlignment="Left" Text="{Binding Charge, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="SensorType"/>
+            <ComboBox Grid.Row="1" 
+                      ItemsSource="{Binding SensorStates}"
+                      SelectedValue="{Binding SensorState}" 
+                      Margin="0 5 0 0" Width="200" 
+                      HorizontalAlignment="Left"/>
+        </Grid>
+        <Grid Grid.Row="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Username"/>
+            <TextBox Grid.Row="1" Margin="0 5 0 0" Width="200" HorizontalAlignment="Left" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+        <StackPanel Grid.Row="5"
+                    Margin="0 25 0 0"
+                    Orientation="Horizontal">
+            <Button Content="Submit" Command="{Binding SubmitCommand}"/>
+            <Button Margin="5 0 0 0" Content="Cancel" Command="{Binding CancelCommand}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

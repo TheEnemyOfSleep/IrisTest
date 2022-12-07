@@ -1,0 +1,71 @@
+﻿<Window x:Class="IrisWpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IrisWpfApp1"
+        xmlns:views="clr-namespace:IrisWpfApp1.Views"
+        xmlns:vms="clr-namespace:IrisWpfApp1.ViewModels"
+        mc:Ignorable="d"
+        Title="IrisTest" Height="450" Width="800">
+    <Grid>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type vms:AddSensorViewModel}">
+                <views:CreateUpdateSensor/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:EditSensorViewModel}">
+                <views:CreateUpdateSensor/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:SensorsListingViewModel}">
+                <views:ListingSensors/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:SignalsListingViewModel}">
+                <views:ListingSignals/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:CreateSignalViewModel}">
+                <views:CreateSignals/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:EditSignalViewModel}">
+                <views:CreateSignals/>
+            </DataTemplate>
+        </Grid.Resources>
+        <TabControl x:Name="sensors">
+            <TabItem x:Name="sensorsTab">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="3" Text="Sensors"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <StackPanel>
+                        <ContentControl Content="{Binding CurrentSensorViewModel}"/>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem x:Name="signalsTab">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="3" Text="Signals"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <StackPanel>
+                        <ContentControl Content="{Binding CurrentSignalViewModel}"/>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem x:Name="historyTab">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="3" Text="History"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <StackPanel>
+                        <views:ListingHistory DataContext="{Binding CurrentHistoryViewModel}"/>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

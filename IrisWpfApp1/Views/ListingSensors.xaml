@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="IrisWpfApp1.Views.ListingSensors"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IrisWpfApp1.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Text="View Sensors" FontSize="18"/>
+            <Button Grid.Column="1" Content="Add Sensor" Command="{Binding AddSensorCommand}"/>
+            <Button Grid.Column="2" Content="Edit Sensor" Command="{Binding EditSensorCommand}"/>
+            <Button Grid.Column="3" Content="Delete Sensor" Command="{Binding DeleteSensorCommand}"/>
+        </Grid>
+
+        <ListView Grid.Row="1" Margin="0 25 0 0" MaxHeight="300" ItemsSource="{Binding Sensors}" SelectedItem="{Binding SelectedSensor}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Sensor Number">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding SensorNumber}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Location">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Location}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Charge">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Charge}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Status">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding SensorStateId}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Text="Send signal" FontSize="18"/>
+            <Button Grid.Column="1" Content="Alarm" Command="{Binding SendAlarmSignalCommand}"/>
+            <Button Grid.Column="2" Content="Service" Command="{Binding SendServiceSignalCommand}"/>
+        </Grid>
+    </Grid>
+</UserControl>
